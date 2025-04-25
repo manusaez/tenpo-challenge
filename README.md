@@ -84,12 +84,6 @@ docker compose version
 git clone https://github.com/manusaez/tenpo-challenge.git
 ```
 
-Luego ingresar al directorio raíz donde se ha clonado el repositorio.
-
-```bash
-cd challenge
-```
-
 ### 3. Iniciar docker compose
 Utilizar docker compose para iniciar la API, obteniendo la imagen de la aplicación ya creada desde Docker Hub.
 Para esto ubicarse en el directorio raíz del proyecto y ejecutar la siguiente instrucción:
