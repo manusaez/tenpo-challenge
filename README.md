@@ -28,7 +28,6 @@ La lógica central implica recibir dos números, sumarlos y aplicar un aumento p
 - Resilience4j 2.2
   - resilience4j-ratelimiter-2.2.0
   - resilience4j-retry-2.2.0
-- Openapi 2.8 (with Swagger UI for Spring Webflux)
 - PostgreSQL 17
 - Redis 7
 - Docker + Docker Compose
