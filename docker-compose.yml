@@ -1,0 +1,47 @@
+services:
+  app:
+#    build: .
+    container_name: app
+    image: manusaez/tenpo-challenge:latest
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      SPRING_R2DBC_URL: r2dbc:postgresql://postgres:5432/tenpochallenge_db
+      SPRING_DATA_REDIS_HOST: redis
+      TZ: America/Santiago
+    env_file: src/main/resources/application.yml
+    ports:
+      - "8080:8080"
+    networks:
+      - tenpo-network
+
+  postgres:
+    image: postgres:17
+    container_name: postgres
+    environment:
+      POSTGRES_DB: tenpochallenge_db
+      POSTGRES_PASSWORD: tenpopass
+      POSTGRES_USER: tenpouser
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+    networks:
+      - tenpo-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - tenpo-network
+
+volumes:
+  redis_data:
+
+networks:
+  tenpo-network:

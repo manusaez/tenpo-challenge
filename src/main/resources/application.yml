@@ -1,0 +1,35 @@
+spring:
+  application:
+  name: Tenpo challenge
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/tenpochallenge_db
+    username: tenpouser
+    password: tenpopass
+
+api:
+  percentage:
+    cache:
+      ttl: 30
+
+endpoint:
+  random-number-api: https://www.randomnumberapi.com/api/v1.0/random?min=1&max=100&count=1
+
+logging:
+  level:
+    root: INFO
+
+resilience4j:
+  retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 2s
+  rateLimiter:
+    configs:
+      default:
+        timeoutDuration: 0
+        limitForPeriod: 3
+        limit-refresh-period: 60s
+
+lombok:
+  addLombokGeneratedAnnotation: true
